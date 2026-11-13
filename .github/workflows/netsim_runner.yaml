@@ -100,7 +100,7 @@ jobs:
     runs-on: [self-hosted, linux, X64]
     steps:
     - name: Checkout
-      uses: actions/checkout@v5
+      uses: actions/checkout@v7
       with:
         submodules: recursive
         ref: ${{ inputs.branch }}
@@ -109,7 +109,7 @@ jobs:
       uses: dtolnay/rust-toolchain@stable
 
     - name: Install sccache
-      uses: mozilla-actions/sccache-action@v0.0.9
+      uses: mozilla-actions/sccache-action@v0.0.11
 
     - name: Build iroh
       run: |
@@ -190,7 +190,7 @@ jobs:
 
     - name: Upload report
       if: always()
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v7
       id: upload-report
       with:
         name: netsim-report-${{ env.LAST_COMMIT_SHA }}
